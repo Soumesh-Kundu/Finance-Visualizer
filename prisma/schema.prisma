@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/prisma"
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Transactions {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  time        DateTime
+  type        TransactionType
+  categoryId  String          @db.ObjectId
+  description String?
+  category    Categories      @relation(fields: [categoryId], references: [id])
+}
+
+model Categories {
+  id           String          @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  budget       Float?          @default(0)
+  type         TransactionType
+  transactions Transactions[]
+}
