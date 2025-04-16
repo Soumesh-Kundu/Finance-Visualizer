@@ -2,6 +2,7 @@ import Dashboard from '@/components/Dashboard'
 import React from 'react'
 import { getCategories, getDashboardTransactions, getTransactions } from '../_action'
 import BudgetModal from '@/components/BudgetModal';
+export const dynamic='force-dynamic'
 
 export default  async function page() {
   const data=await getDashboardTransactions();

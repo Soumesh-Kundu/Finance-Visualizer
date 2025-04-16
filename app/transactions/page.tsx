@@ -2,7 +2,7 @@ import Transactions from "@/components/Transaction";
 import { getCategories, getTransactions } from "../_action";
 import { TransactionType } from "@/lib/prisma";
 import { GroupCategories } from "@/lib/types/categories";
-
+export const dynamic='force-dynamic'
 export default async function page() {
   const data = await getTransactions();
   const categories = await getCategories();
