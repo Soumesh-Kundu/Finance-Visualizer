@@ -22,7 +22,6 @@ export default function Transactions({history, categoryList }:Props) {
   const [currentTransaction, setCurrentTransaction] =
     useState<currTransaction | null>(null);
   function initTransaction(transac: tObject | null = null) {
-    console.log(new ObjectId().toHexString());
     setCurrentTransaction({
       id: transac?.id || new ObjectId().toHexString(),
       modalType: transac ? "UPDATE" : "ADD",

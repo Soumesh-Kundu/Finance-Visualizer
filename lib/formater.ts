@@ -1,7 +1,6 @@
 export function getFormattedDate(createdAt: Date, showTime = true) {
   const date = createdAt;
   const now = new Date();
-  console.log(createdAt);
   const diffDays = now.getDate() - date.getDate();
   const diffMonths = now.getMonth() - date.getMonth();
   const diffYears = now.getFullYear() - date.getFullYear();
@@ -31,7 +30,6 @@ export function getFormattedDate(createdAt: Date, showTime = true) {
   if (showTime) {
     timeString += ", " + time.slice(0, 5);
   }
-  console.log(createdAt, timeString, diffDays, diffMonths, diffYears);
   return timeString;
 }
 
